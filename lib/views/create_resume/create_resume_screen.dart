@@ -376,6 +376,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
           int idx = entry.key;
           var edu = entry.value;
           return Container(
+            key: ValueKey(edu),
             margin: const EdgeInsets.only(bottom: 24),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -444,6 +445,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
           int idx = entry.key;
           var exp = entry.value;
           return Container(
+            key: ValueKey(exp),
             margin: const EdgeInsets.only(bottom: 24),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -531,6 +533,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
           int idx = entry.key;
           var controller = entry.value;
           return Padding(
+            key: ValueKey(controller),
             padding: const EdgeInsets.only(bottom: 12.0),
             child: Row(
               children: [
@@ -582,6 +585,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
           int idx = entry.key;
           var controller = entry.value;
           return Padding(
+            key: ValueKey(controller),
             padding: const EdgeInsets.only(bottom: 12.0),
             child: Row(
               children: [
@@ -622,6 +626,7 @@ class _CreateResumeScreenState extends State<CreateResumeScreen> {
           int idx = entry.key;
           var proj = entry.value;
           return Container(
+            key: ValueKey(proj),
             margin: const EdgeInsets.only(bottom: 24),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(

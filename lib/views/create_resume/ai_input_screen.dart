@@ -435,77 +435,80 @@ class _AIInputScreenState extends State<AIInputScreen> {
             if (template.isNotEmpty || _selectedImage != null) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8, left: 8),
-                child: Row(
-                  children: [
-                    if (template.isNotEmpty)
-                      Container(
-                        margin: const EdgeInsets.only(right: 8),
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: AppColors.surface,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: AppColors.border),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: AppColors.primarySoft.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(4),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      if (template.isNotEmpty)
+                        Container(
+                          margin: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: AppColors.surface,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primarySoft.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                child: const Icon(Icons.description, color: AppColors.primary, size: 16),
                               ),
-                              child: const Icon(Icons.description, color: AppColors.primary, size: 16),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              '$template Template',
-                              style: AppTextStyles.bodySmall.copyWith(color: AppColors.textWhite, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(width: 12),
-                            GestureDetector(
-                              onTap: () {
-                                ResumeController.instance.selectedTemplate.value = '';
-                                Get.toNamed('/templates');
-                              },
-                              child: const Icon(Icons.close, color: AppColors.textMuted, size: 16),
-                            ),
-                          ],
+                              const SizedBox(width: 8),
+                              Text(
+                                '$template Template',
+                                style: AppTextStyles.bodySmall.copyWith(color: AppColors.textWhite, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(width: 12),
+                              GestureDetector(
+                                onTap: () {
+                                  ResumeController.instance.selectedTemplate.value = '';
+                                  Get.toNamed('/templates');
+                                },
+                                child: const Icon(Icons.close, color: AppColors.textMuted, size: 16),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    if (_selectedImage != null)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: AppColors.surface,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: AppColors.border),
+                      if (_selectedImage != null)
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: AppColors.surface,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Image.file(_selectedImage!, width: 24, height: 24, fit: BoxFit.cover),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Photo Attached',
+                                style: AppTextStyles.bodySmall.copyWith(color: AppColors.textWhite, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(width: 12),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedImage = null;
+                                  });
+                                },
+                                child: const Icon(Icons.close, color: AppColors.textMuted, size: 16),
+                              ),
+                            ],
+                          ),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(4),
-                              child: Image.file(_selectedImage!, width: 24, height: 24, fit: BoxFit.cover),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              'Photo Attached',
-                              style: AppTextStyles.bodySmall.copyWith(color: AppColors.textWhite, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(width: 12),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  _selectedImage = null;
-                                });
-                              },
-                              child: const Icon(Icons.close, color: AppColors.textMuted, size: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             }
