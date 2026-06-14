@@ -1,0 +1,90 @@
+--- lib/core/services/pdf_service.dart
++++ lib/core/services/pdf_service.dart
+@@ -21,11 +21,20 @@
+     }
+     
+     final pdf = pw.Document();
+ 
++    pw.Font? iconFont;
++    if (selectedTemplate == 'Classic') {
++      try {
++        iconFont = await PdfGoogleFonts.materialIconsRegular();
++      } catch (e) {
++        debugPrint('Failed to load icon font: $e');
++      }
++    }
++
+     pw.Page page;
+     switch (selectedTemplate) {
+       case 'Classic':
+-        page = _buildClassicTemplate(resume);
++        page = _buildClassicTemplate(resume, iconFont);
+         break;
+       case 'Minimal':
+         page = _buildMinimalTemplate(resume);
+@@ -109,7 +118,22 @@
+   // ==========================================
+   // TEMPLATE 2: CLASSIC (Professional Two-Column)
+   // ==========================================
+-  
++
++  static pw.Widget _buildContactItem(int iconCodePoint, String text, pw.Font? iconFont) {
++    if (text.isEmpty) return pw.SizedBox();
++    return pw.Row(
++      crossAxisAlignment: pw.CrossAxisAlignment.center,
++      children: [
++        if (iconFont != null)
++          pw.Icon(pw.IconData(iconCodePoint), font: iconFont, size: 12, color: const PdfColor.fromInt(0xFF555555))
++        else
++          pw.SizedBox(width: 12, height: 12),
++        pw.SizedBox(width: 8),
++        pw.Expanded(child: pw.Text(text, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF555555)))),
++      ]
++    );
++  }
++
+   static pw.Widget _buildProfessionalSectionTitle(String title) {
+     return pw.Padding(
+       padding: const pw.EdgeInsets.only(bottom: 12, top: 16),
+@@ -138,7 +162,7 @@
+     );
+   }
+ 
+-  static pw.Page _buildClassicTemplate(ResumeModel resume) {
++  static pw.Page _buildClassicTemplate(ResumeModel resume, pw.Font? iconFont) {
+     return pw.Page(
+       pageFormat: PdfPageFormat.a4,
+       margin: const pw.EdgeInsets.all(36),
+@@ -188,27 +212,11 @@
+                         children: [
+                           _buildProfessionalSectionTitle('Contact'),
+-                          if (resume.personalInfo.phone.isNotEmpty) ...[
+-                            pw.Text(resume.personalInfo.phone, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                            pw.SizedBox(height: 4),
+-                          ],
+-                          if (resume.personalInfo.email.isNotEmpty) ...[
+-                            pw.Text(resume.personalInfo.email, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                            pw.SizedBox(height: 4),
+-                          ],
+-                          if (resume.personalInfo.location.isNotEmpty) ...[
+-                            pw.Text(resume.personalInfo.location, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                          ],
+-                          if (resume.personalInfo.linkedIn.isNotEmpty) ...[
+-                            pw.SizedBox(height: 4),
+-                            pw.Text(resume.personalInfo.linkedIn, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                          ],
+-                          if (resume.personalInfo.github.isNotEmpty) ...[
+-                            pw.SizedBox(height: 4),
+-                            pw.Text(resume.personalInfo.github, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                          ],
+-                          if (resume.personalInfo.portfolio.isNotEmpty) ...[
+-                            pw.SizedBox(height: 4),
+-                            pw.Text(resume.personalInfo.portfolio, style: const pw.TextStyle(fontSize: 9, color: PdfColor.fromInt(0xFF444444))),
+-                          ],
++                          _buildContactItem(0xe4cd, resume.personalInfo.phone, iconFont), // Icons.phone
++                          pw.SizedBox(height: 8),
++                          _buildContactItem(0xe158, resume.personalInfo.email, iconFont), // Icons.email
++                          pw.SizedBox(height: 8),
++                          _buildContactItem(0xe0c8, resume.personalInfo.location, iconFont), // Icons.location_on
+                           pw.SizedBox(height: 16),
+                           pw.Container(height: 1, width: double.infinity, color: const PdfColor.fromInt(0xFFDDDDDD)),

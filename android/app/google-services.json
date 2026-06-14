@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1015940638401",
+    "project_id": "resify-6983c",
+    "storage_bucket": "resify-6983c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015940638401:android:3db11668e544988a1c9640",
+        "android_client_info": {
+          "package_name": "com.example.resify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5nJ81Ipi3EzJsr83Hx-1I5mIwfzjG9kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
