@@ -62,7 +62,7 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       // Ignore firestore errors so it doesn't block login
-      print("Firestore Error: $e");
+      debugPrint("Firestore Error: $e");
     }
   }
 

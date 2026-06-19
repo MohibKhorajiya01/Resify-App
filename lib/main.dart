@@ -16,35 +16,12 @@ import 'views/create_resume/ai_input_screen.dart';
 import 'views/create_resume/create_resume_screen.dart';
 import 'views/templates/template_screen.dart';
 import 'views/preview/resume_preview_screen.dart';
-import 'views/preview/ats_score_screen.dart';
 import 'views/settings/profile_screen.dart';
 import 'views/settings/edit_profile_screen.dart';
 import 'views/settings/faq_screen.dart';
 import 'views/settings/privacy_policy_screen.dart';
 import 'views/settings/downloaded_pdfs_screen.dart';
 
-// Placeholder for screens to test routing
-class PlaceholderScreen extends StatelessWidget {
-  final String title;
-  const PlaceholderScreen({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: Text(title, style: const TextStyle(color: AppColors.textWhite)),
-        backgroundColor: AppColors.surface,
-      ),
-      body: Center(
-        child: Text(
-          '$title Screen',
-          style: const TextStyle(color: AppColors.textWhite, fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,7 +62,6 @@ class ResifyApp extends StatelessWidget {
         GetPage(name: '/create_resume', page: () => const CreateResumeScreen()),
         GetPage(name: '/templates', page: () => const TemplateScreen()),
         GetPage(name: '/preview', page: () => ResumePreviewScreen()),
-        GetPage(name: '/ats_score', page: () => const ATSScoreScreen()),
         GetPage(name: '/profile', page: () => const ProfileScreen()),
         GetPage(name: '/edit_profile', page: () => const EditProfileScreen()),
         GetPage(name: '/faq', page: () => const FAQScreen()),

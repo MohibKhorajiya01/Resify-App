@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
+import 'package:flutter/foundation.dart';
 class GeminiService {
   static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
   
@@ -133,7 +133,7 @@ $prompt
       if (e.toString() == 'Exception: BAD_PROMPT' || e.toString() == 'Exception: RATE_LIMIT') {
         rethrow;
       }
-      print('Gemini API Error: $e');
+      debugPrint('Gemini API Error: $e');
       throw Exception('Failed to generate resume from AI: $e');
     }
   }
