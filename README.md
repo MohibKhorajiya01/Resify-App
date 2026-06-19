@@ -42,7 +42,7 @@
 ## 🛠️ Tech Stack
 
 | Layer                       | Technology                                              |
-|------------------------------|----------------------------------------------------------|
+|-----------------------------|----------------------------------------------------_----|
 | Framework                   | Flutter & Dart                                          |
 | Architecture & State Mgmt   | MVC Pattern using **GetX** (Routing, State, DI)         |
 | API Integration & Networking| Custom REST API via `http` (HTTP POST, JSON Parsing)    |
