@@ -41,15 +41,15 @@
 
 ## 🛠️ Tech Stack
 
-| Layer                       | Technology                                              |
-|-----------------------------|----------------------------------------------------_----|
-| Framework                   | Flutter & Dart                                          |
-| Architecture & State Mgmt   | MVC Pattern using **GetX** (Routing, State, DI)         |
-| API Integration & Networking| Custom REST API via `http` (HTTP POST, JSON Parsing)    |
-| Backend as a Service (BaaS) | Firebase (Firestore for DB, Authentication)             |
-| AI Engine                   | Google Gemini 2.5 Flash API (Direct REST Integration)   |
-| PDF Engine                  | `pdf` (creation) & `printing` (rasterization & export)  |
-| Security & Environment      | `flutter_dotenv` for secure environment variables       |
+| Layer                         | Technology                                             |
+|--------------------------------|---------------------------------------------------------|
+| Framework                     | Flutter & Dart                                         |
+| Architecture & State Mgmt     | MVC Pattern using **GetX** (Routing, State, DI)        |
+| API Integration & Networking  | Custom REST API via `http` (HTTP POST, JSON Parsing)   |
+| Backend as a Service (BaaS)   | Firebase (Firestore for DB, Authentication)            |
+| AI Engine                     | Google Gemini 2.5 Flash API (Direct REST Integration)  |
+| PDF Engine                    | `pdf` (creation) & `printing` (rasterization & export) |
+| Security & Environment        | `flutter_dotenv` for secure environment variables      |
 
 ---
 
