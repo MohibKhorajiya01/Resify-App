@@ -45,3 +45,4 @@ app.*.map.json
 /android/app/release
 \n# Environment Variables\n.env
 .env
+/android/build/
